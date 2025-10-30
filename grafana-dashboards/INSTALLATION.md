@@ -1,5 +1,12 @@
 # Quick Installation Guide
 
+## Choose Your Database
+
+This guide covers both **InfluxDB** and **QuestDB** setups:
+
+- **InfluxDB**: Use `ffxiv-fc-economy-dashboard.json`
+- **QuestDB**: Use `ffxiv-fc-economy-dashboard-questdb.json` (see [QUESTDB.md](QUESTDB.md) for detailed guide)
+
 ## Prerequisites
 
 Before importing the dashboard, ensure you have:
@@ -53,12 +60,17 @@ docker run -d \
 docker run -d \
   --name questdb \
   -p 9000:9000 \
+  -p 8812:8812 \
   -p 9009:9009 \
   -v questdb-data:/root/.questdb \
   questdb/questdb:latest
 
 # Access UI at http://localhost:9000
+# Port 8812: PostgreSQL wire protocol (for Grafana)
+# Port 9009: InfluxDB line protocol (for InfluxReborn)
 ```
+
+**For QuestDB users**: See [QUESTDB.md](QUESTDB.md) for complete setup instructions including PostgreSQL data source configuration.
 
 ### 3. Set Up Grafana
 
@@ -91,12 +103,23 @@ docker run -d \
 
 ### 4. Import Dashboard
 
+#### For InfluxDB Users
+
 1. In Grafana, go to **Dashboards** → **Import**
 2. Click **Upload JSON file**
 3. Select `ffxiv-fc-economy-dashboard.json`
-4. Or copy-paste the JSON content
-5. Select your InfluxDB data source from the dropdown
-6. Click **Import**
+4. Select your InfluxDB data source from the dropdown
+5. Click **Import**
+
+#### For QuestDB Users
+
+1. In Grafana, go to **Dashboards** → **Import**
+2. Click **Upload JSON file**
+3. Select `ffxiv-fc-economy-dashboard-questdb.json`
+4. Select your PostgreSQL data source (configured for QuestDB)
+5. Click **Import**
+
+**Note**: See [QUESTDB.md](QUESTDB.md) for detailed QuestDB-specific instructions.
 
 ### 5. Verify Data
 

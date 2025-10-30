@@ -45,7 +45,10 @@ Set up your database connection:
 
 ## Grafana Dashboard
 
-This repository includes a **comprehensive Grafana dashboard** designed for managing **300+ Free Companies** and **1000+ characters**.
+This repository includes **two versions** of a comprehensive Grafana dashboard designed for managing **300+ Free Companies** and **1000+ characters**:
+
+- **InfluxDB Version** (`ffxiv-fc-economy-dashboard.json`): Uses InfluxQL queries
+- **QuestDB Version** (`ffxiv-fc-economy-dashboard-questdb.json`): Uses PostgreSQL-compatible SQL
 
 ### 📊 Dashboard Features
 
@@ -58,6 +61,8 @@ This repository includes a **comprehensive Grafana dashboard** designed for mana
 - **Economic Analytics**: Distribution and trend analysis
 
 ### Quick Dashboard Setup
+
+#### Using InfluxDB
 
 ```bash
 # 1. Set up InfluxDB (using Docker)
@@ -72,10 +77,29 @@ docker run -d --name grafana -p 3000:3000 grafana/grafana:latest
 # Upload: grafana-dashboards/ffxiv-fc-economy-dashboard.json
 ```
 
+#### Using QuestDB
+
+```bash
+# 1. Set up QuestDB (using Docker)
+docker run -d --name questdb -p 9000:9000 -p 8812:8812 -p 9009:9009 questdb/questdb:latest
+
+# 2. Set up Grafana (using Docker)
+docker run -d --name grafana -p 3000:3000 grafana/grafana:latest
+
+# 3. Import dashboard
+# Open Grafana at http://localhost:3000
+# Add PostgreSQL data source (host: localhost:8812, database: qdb)
+# Go to Dashboards → Import
+# Upload: grafana-dashboards/ffxiv-fc-economy-dashboard-questdb.json
+```
+
+See **[QUESTDB.md](grafana-dashboards/QUESTDB.md)** for detailed QuestDB setup.
+
 ### 📚 Dashboard Documentation
 
 - **[README](grafana-dashboards/README.md)**: Complete dashboard documentation
 - **[Installation Guide](grafana-dashboards/INSTALLATION.md)**: Step-by-step setup
+- **[QuestDB Setup](grafana-dashboards/QUESTDB.md)**: QuestDB-specific guide
 - **[Visual Preview](grafana-dashboards/PREVIEW.md)**: Dashboard layout reference
 - **[Example Queries](grafana-dashboards/EXAMPLE-QUERIES.md)**: Custom query examples
 - **[Features Summary](grafana-dashboards/FEATURES.md)**: Full feature list

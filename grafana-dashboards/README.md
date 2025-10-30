@@ -2,9 +2,22 @@
 
 This directory contains Grafana dashboards for visualizing Final Fantasy XIV game statistics collected by the InfluxReborn plugin.
 
-## 📊 Main Dashboard: `ffxiv-fc-economy-dashboard.json`
+## 📊 Dashboard Versions
 
-A comprehensive, production-ready dashboard designed for managing **300+ Free Companies** and **1000+ characters** across multiple worlds/data centers.
+Two versions of the dashboard are available:
+
+### InfluxDB Version: `ffxiv-fc-economy-dashboard.json`
+- **Query Language**: InfluxQL
+- **Data Source**: InfluxDB 1.8+ or 2.x
+- **Best For**: Users already using InfluxDB
+
+### QuestDB Version: `ffxiv-fc-economy-dashboard-questdb.json`
+- **Query Language**: PostgreSQL-compatible SQL
+- **Data Source**: PostgreSQL (for QuestDB wire protocol)
+- **Best For**: Users preferring QuestDB's performance and SQL syntax
+- **Documentation**: See [QUESTDB.md](QUESTDB.md) for setup guide
+
+Both versions provide the same functionality and are designed for managing **300+ Free Companies** and **1000+ characters** across multiple worlds/data centers.
 
 ### Features
 
