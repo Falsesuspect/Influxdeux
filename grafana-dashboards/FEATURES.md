@@ -30,7 +30,7 @@ The dashboard includes **28 professionally designed panels** organized into **7 
 - Total FC Credits (stat with trend)
 - Gil Trend by Entity Type (time series)
 
-#### 2. Regional Breakdown (4 panels)
+#### 2. Regional Breakdown (3 panels)
 - Gil Distribution by World (donut chart)
 - Resources by World (table)
 - Regional Resource Comparison (bar chart)
@@ -58,7 +58,7 @@ The dashboard includes **28 professionally designed panels** organized into **7 
 - Available Sub Slots (stat)
 - All Submarines searchable (table)
 
-#### 7. Economic Distribution (4 panels)
+#### 7. Economic Distribution (5 panels)
 - Wealth Distribution Over Time (stacked bar)
 - Current Gil Distribution (donut chart)
 - Repair Kits Distribution (time series)
